@@ -321,6 +321,38 @@
 <h2 id="private-protect变量构造"><a href="#private-protect变量构造" class="headerlink" title="private protect变量构造"></a>private protect变量构造</h2><p>如最开始</p>
 <p>在构造<code>payload</code>时</p>
 <p>将所得的<code>payload</code>进行<code>url编码</code>即可</p>
+<h2 id="Session反序列化漏洞"><a href="#Session反序列化漏洞" class="headerlink" title="Session反序列化漏洞"></a>Session反序列化漏洞</h2><p><code>PHP</code>中的<code>Session</code>经序列化后存储，读取时再进行反序列化。</p>
+<p>相关配置：</p>
+<p><code>session.save_path=&quot;&quot;</code> //设置session的存储路径</p>
+<p><code>session.save_handler=&quot;&quot;</code> //设定用户自定义存储函数，如果想使用PHP内置会话存储机制之外的可以使用本函数(数据库等方式)</p>
+<p><code>session.auto_start boolen</code> //指定会话模块是否在请求开始时启动一个会话<code>默认为0不启动</code></p>
+<p><code>session.serialize_handler string</code> //定义用来序列化/反序列化的处理器名字。默认使用<code>php</code></p>
+<p><code>PHP</code>有<code>3</code>种序列化处理器</p>
+<table>
+<thead>
+<tr>
+<th align="center">处理器</th>
+<th align="center">对应的存储格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">php</td>
+<td align="center">键名+竖线（|）+经过serialize()函数处理过的值</td>
+</tr>
+<tr>
+<td align="center">php_binary</td>
+<td align="center">键名的长度对应的ascii字符+键名+经过serialize()函数序列化后的值</td>
+</tr>
+<tr>
+<td align="center">php_serialize</td>
+<td align="center">经过serialize()函数处理过的值，会将键名和值当作一个数组序列化</td>
+</tr>
+</tbody></table>
+<p>代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	session_start();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;test&#x27;</span>] = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">	<span class="keyword">echo</span> session_id();</span><br></pre></td></tr></table></figure>
+
+<p>执行后可以看到</p>
+<p><img src="/2021/06/05/phpUnserialize/s3.png" alt="php_unseriablize3"></p>
 
       
     </div>
