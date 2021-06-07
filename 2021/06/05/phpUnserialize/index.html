@@ -32,10 +32,10 @@
 <meta property="og:image" content="http://cmacckk.cloud/2021/06/05/phpUnserialize/s7.png">
 <meta property="og:image" content="http://cmacckk.cloud/2021/06/05/phpUnserialize/s8.png">
 <meta property="article:published_time" content="2021-06-05T15:04:03.000Z">
-<meta property="article:modified_time" content="2021-06-07T04:49:41.731Z">
+<meta property="article:modified_time" content="2021-06-07T05:20:44.618Z">
 <meta property="article:author" content="CMACCKK   备案号:滇ICP备2021003344号">
-<meta property="article:tag" content="CTF">
 <meta property="article:tag" content="payload">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cmacckk.cloud/2021/06/05/phpUnserialize/image-20210605224100230.png">
 
@@ -433,6 +433,7 @@
 
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$phar</span> = <span class="keyword">new</span> Phar(<span class="string">&#x27;phar.phar&#x27;</span>);	<span class="comment">//后缀名必须为phar</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;startBuffering();</span><br><span class="line">	<span class="variable">$phar</span>-&gt;setStub(<span class="string">&quot;GIF89a&quot;</span> . <span class="string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>);	<span class="comment">//设置stub，增加gif文件头绕过</span></span><br><span class="line">	<span class="variable">$o</span> = <span class="keyword">new</span> A();</span><br><span class="line">	<span class="variable">$phar</span>-&gt;setMetadata(<span class="variable">$o</span>);		<span class="comment">// 将自定义的meta-data存入manifest</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;addFromString(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;test&#x27;</span>);	<span class="comment">// 添加要压缩的文件</span></span><br><span class="line">	<span class="comment">// 签名自动计算</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;stopBuffering();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
+参考https://www.cnblogs.com/ichunqiu/p/10484832.html
 
       
     </div>
@@ -444,7 +445,7 @@
         <p><span>Title:</span><a href="/2021/06/05/phpUnserialize/">PHP反序列化</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">CMACCKK</a></p>
         <p><span>Created:</span>2021-06-05, 23:04:03</p>
-        <p><span>Updated:</span>2021-06-07, 12:49:41</p>
+        <p><span>Updated:</span>2021-06-07, 13:20:44</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2021/06/05/phpUnserialize/" title="PHP反序列化">http://cmacckk.cloud/2021/06/05/phpUnserialize/</a>
             <span class="copy-path" data-clipboard-text="From http://cmacckk.cloud/2021/06/05/phpUnserialize/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
