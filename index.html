@@ -443,14 +443,14 @@
 
 <p>我们需要逃逸这个部分</p>
 <p><img src="/2021/06/05/phpUnserialize/s15.png" alt="php_unseriablize15"></p>
-<p>我们需要在这个字符串之前添加一个字符或字符串</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>我们需要在这个字符串之前添加一个字符或字符串</p>
 <p>这里我添加一个<code>C</code></p>
 <p>将<code>sign</code>的值改为<code>&quot;C;s:4:&quot;sign&quot;;s:4:&quot;test&quot;;s:4:&quot;year&quot;;s:4:&quot;2100&quot;;&#125;</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> preg_replace(<span class="string">&quot;/ctf|flag/i&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;cmacckk&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;sign&#x27;</span>] = <span class="string">&#x27;C&quot;;s:4:&quot;sign&quot;;s:4:&quot;test&quot;;s:4:&quot;year&quot;;s:4:&quot;2100&quot;;&#125;&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;year&#x27;</span>] = <span class="string">&#x27;2100&#x27;</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">echo</span> serialize(<span class="variable">$test</span>);</span><br></pre></td></tr></table></figure>
 
 <p>运行</p>
 <p><img src="/2021/06/05/phpUnserialize/s16.png" alt="php_unseriablize16"></p>
-<p>查看<code>&quot;;s:4:&quot;sign&quot;;s:48:&quot;C</code>的长度</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>查看<code>&quot;;s:4:&quot;sign&quot;;s:48:&quot;C</code>的长度</p>
 <p><img src="/2021/06/05/phpUnserialize/s17.png" alt="php_unseriablize17"></p>
 <p>发现长度为<code>20</code></p>
 <p>在这里的<code>waf</code>函数中，将<code>ctf</code>或<code>flag</code>替换为<code>&#39;&#39;</code>，所以一个ctf能逃逸<code>3</code>个字符，一个flag能逃逸<code>4</code>个字符</p>
