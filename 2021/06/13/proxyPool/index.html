@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="CMACCKK   备案号:滇ICP备2021003344号" />
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代理池构建">
+<meta property="og:url" content="http://cmacckk.cloud/2021/06/13/proxyPool/index.html">
+<meta property="og:site_name" content="CMACCKK blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-13T02:16:59.000Z">
+<meta property="article:modified_time" content="2021-06-13T02:26:48.814Z">
+<meta property="article:author" content="CMACCKK   备案号:滇ICP备2021003344号">
+<meta property="article:tag" content="tool">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="CMACCKK blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>代理池构建 | CMACCKK blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/emailforgty@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CMACCKK/cmacckk.github.io" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/qq_43536831?spm=1000.2115.3001.5343" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/config/" rel="tag">config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/message/" rel="tag">message</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/payload/" rel="tag">payload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/emailforgty@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CMACCKK/cmacckk.github.io" title="GitHub"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/qq_43536831?spm=1000.2115.3001.5343" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-proxyPool" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/06/13/proxyPool/" class="article-date">
+      <time datetime="2021-06-13T02:16:59.000Z" itemprop="datePublished">2021-06-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      代理池构建
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"><span class="keyword">from</span> colorama <span class="keyword">import</span> Fore</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> requests.packages.urllib3.exceptions <span class="keyword">import</span> InsecureRequestWarning</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sendFromAddr = <span class="string">&#x27;xxxxxxx@163.com&#x27;</span></span><br><span class="line">sendFromPassword = <span class="string">&#x27;XXXXXXXXXXXXXXX&#x27;</span></span><br><span class="line">neteaseSMTPServer = <span class="string">&#x27;smtp.163.com&#x27;</span></span><br><span class="line"></span><br><span class="line">mysqlHost = <span class="string">&#x27;XXXXXXXXXXXXXX&#x27;</span></span><br><span class="line">mysqlUser = <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line">mysqlPassword = <span class="string">&#x27;XXXXXXXXXXX&#x27;</span></span><br><span class="line">mysqlDatabase = <span class="string">&#x27;XXXXXXXXXXX&#x27;</span></span><br><span class="line">mysqlCharset = <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line"></span><br><span class="line">_7yipPage = <span class="number">10</span>		<span class="comment"># 齐云代理前X页的代理地址</span></span><br><span class="line">threads = <span class="number">10</span>	<span class="comment"># 线程数</span></span><br><span class="line">judgeProxyUrl = <span class="string">&quot;https://www.baidu.com/s?wd=ip&quot;</span></span><br><span class="line">requestTimeout = <span class="number">5</span>      <span class="comment"># 请求超时时间</span></span><br><span class="line">headers = &#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">_89ipProxyUrl = <span class="string">&quot;1501&quot;</span>		<span class="comment"># 89ip X-1个代理地址</span></span><br><span class="line">_89ipURL = <span class="string">&quot;http://api.89ip.cn/tqdl.html?api=1&amp;num=%s&amp;port=&amp;address=&amp;isp=&quot;</span> %_89ipProxyUrl</span><br><span class="line"></span><br><span class="line">requests.packages.urllib3.disable_warnings(InsecureRequestWarning)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_flush</span>(<span class="params">info</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        print flush function</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(</span><br><span class="line">        color.green(<span class="string">&#x27;[INFOR]&#x27;</span>)</span><br><span class="line">        + <span class="string">&#x27; &#x27;</span></span><br><span class="line">        + color.green(info)</span><br><span class="line">        , end=<span class="string">&quot;\r&quot;</span>, flush=<span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Colored</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">red</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTRED_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">green</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTGREEN_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">yellow</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTYELLOW_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">blue</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTBLUE_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">white</span>(<span class="params">self,s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTWHITE_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">magenta</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTMAGENTA_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cyan</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Fore.LIGHTCYAN_EX + s + Fore.RESET</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">color = Colored()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_info</span>(<span class="params">info</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        print info function</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(</span><br><span class="line">        color.green(<span class="string">&#x27;[INFOR]&#x27;</span>)</span><br><span class="line">        + <span class="string">&#x27; &#x27;</span></span><br><span class="line">        + color.green(info)</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_error</span>(<span class="params">error_info</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        print error function</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(</span><br><span class="line">        color.red(<span class="string">&#x27;[ERROR]&#x27;</span>)</span><br><span class="line">        + <span class="string">&#x27; &#x27;</span></span><br><span class="line">        + color.red(error_info)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_warn</span>(<span class="params">warn_info</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        print warn function</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(</span><br><span class="line">        color.yellow(<span class="string">&#x27;[ALERT]&#x27;</span>)</span><br><span class="line">        + <span class="string">&#x27; &#x27;</span></span><br><span class="line">        + color.yellow(warn_info)</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_89ip_proxy</span>(<span class="params">_89ipURL</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;获取89ipURL中的代理地址 返回一个字典</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        _89ipURL ([str]): 89ip URL地址</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        [dict]: 89ipURL中的代理地址字典</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ipPortDict = &#123;&#125;</span><br><span class="line">    response = requests.get(_89ipURL, headers=headers)</span><br><span class="line">    htmlSource = response.content.decode()</span><br><span class="line">    result = htmlSource.split(<span class="string">&quot;&lt;br&gt;&quot;</span>)</span><br><span class="line">    ipColonPortList = result[<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> ipColonPort <span class="keyword">in</span> ipColonPortList:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            ip = ipColonPort.split(<span class="string">&quot;:&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">            port = ipColonPort.split(<span class="string">&quot;:&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">            ipPortDict[ip] = port</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> ipPortDict</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_89ip_proxy</span>(<span class="params">threads</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;筛选可用的代理地址</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        threads ([int]): 线程数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        [list]: 可以的代理列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    options = []</span><br><span class="line">    returnList = []</span><br><span class="line">    print_info(<span class="string">&quot;获取89ip代理地址&quot;</span>)</span><br><span class="line">    ipPortDict = get_89ip_proxy(_89ipURL)</span><br><span class="line">    <span class="comment"># print(ipPortDict)</span></span><br><span class="line">    print_info(<span class="string">&quot;89ip共有%s个代理地址&quot;</span> % <span class="built_in">str</span>(<span class="built_in">len</span>(ipPortDict)))</span><br><span class="line">    print_info(<span class="string">&quot;使用%s个线程&quot;</span> %<span class="built_in">str</span>(threads))</span><br><span class="line">    <span class="keyword">for</span> ip, port <span class="keyword">in</span> ipPortDict.items():</span><br><span class="line">        options.append([judgeProxyUrl, &#123;<span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://%s:%s&quot;</span> % (ip, port), <span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://%s:%s&quot;</span> % (ip, port)&#125;, <span class="string">&quot;%s:%s&quot;</span> % (ip, port)])</span><br><span class="line">    print_info(<span class="string">&quot;获取89ip可用的代理地址&quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> Pool(threads) <span class="keyword">as</span> p:</span><br><span class="line">        poolResult = <span class="built_in">list</span>(tqdm(p.imap(requestUrlStatusCode, options), total=<span class="built_in">len</span>(options), desc=<span class="string">&quot;Proxy Filter&quot;</span>, bar_format=<span class="string">&#x27;%s&#123;l_bar&#125;%s&#123;bar&#125;%s&#123;r_bar&#125;&#x27;</span> % (Fore.LIGHTGREEN_EX, Fore.LIGHTGREEN_EX, Fore.LIGHTGREEN_EX)))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> poolResult:</span><br><span class="line">        <span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            returnList.append(result)</span><br><span class="line">    <span class="keyword">return</span> returnList</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_7yip_proxy</span>(<span class="params">threads</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;筛选7yip可用的代理地址</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        threads ([int]): 线程数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        [list]: 可以的代理列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    options = []</span><br><span class="line">    returnList = []</span><br><span class="line">    ipPortDict = &#123;&#125;</span><br><span class="line">    print_info(<span class="string">&quot;获取7yip代理地址&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, _7yipPage + <span class="number">1</span>):</span><br><span class="line">        _7yipUrl = <span class="string">&quot;https://www.7yip.cn/free/?action=china&amp;page=%s&quot;</span> %<span class="built_in">str</span>(i)</span><br><span class="line">        print_flush(<span class="string">&#x27;获取齐云代理第%s页代理地址&#x27;</span> %<span class="built_in">str</span>(i))</span><br><span class="line">        tmpIpPortDict = get_7yip_proxy(_7yipUrl)</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> tmpIpPortDict.items():</span><br><span class="line">            ipPortDict[k] = v</span><br><span class="line">        sleep(<span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(ipPortDict)</span></span><br><span class="line">    print_info(<span class="string">&quot;7yip共有%s个代理地址&quot;</span> % <span class="built_in">str</span>(<span class="built_in">len</span>(ipPortDict)))</span><br><span class="line">    print_info(<span class="string">&quot;使用%s个线程&quot;</span> %<span class="built_in">str</span>(threads))</span><br><span class="line">    <span class="keyword">for</span> ip, port <span class="keyword">in</span> ipPortDict.items():</span><br><span class="line">        options.append([judgeProxyUrl, &#123;<span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://%s:%s&quot;</span> % (ip, port), <span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://%s:%s&quot;</span> % (ip, port)&#125;, <span class="string">&quot;%s:%s&quot;</span> % (ip, port)])</span><br><span class="line">    print_info(<span class="string">&quot;获取7yip可用的代理地址&quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> Pool(threads) <span class="keyword">as</span> p:</span><br><span class="line">        poolResult = <span class="built_in">list</span>(tqdm(p.imap(requestUrlStatusCode, options), total=<span class="built_in">len</span>(options), desc=<span class="string">&quot;Proxy Filter&quot;</span>, bar_format=<span class="string">&#x27;%s&#123;l_bar&#125;%s&#123;bar&#125;%s&#123;r_bar&#125;&#x27;</span> % (Fore.LIGHTGREEN_EX, Fore.LIGHTGREEN_EX, Fore.LIGHTGREEN_EX)))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> poolResult:</span><br><span class="line">        <span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            returnList.append(result)</span><br><span class="line">    <span class="keyword">return</span> returnList</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_7yip_proxy</span>(<span class="params">_7yipUrl</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;获取7yipUrl中的代理地址 返回一个字典</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        _7yipUrl ([str]): 7yip URL地址</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        [dict]: 7yipURL中的代理地址字典</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ipPortDict = &#123;&#125;</span><br><span class="line">    response = requests.get(_7yipUrl, headers=headers)</span><br><span class="line">    htmlSource = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    xml = etree.HTML(htmlSource)</span><br><span class="line">    ipList = xml.xpath(<span class="string">&#x27;//tbody/tr/td[1]/text()&#x27;</span>)</span><br><span class="line">    portList = xml.xpath(<span class="string">&#x27;//tbody/tr/td[2]/text()&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(portList)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ipList)):</span><br><span class="line">        ipPortDict[ipList[i]] = portList[i]</span><br><span class="line">    <span class="keyword">return</span> ipPortDict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_proxy_to_mysql</span>(<span class="params">proxyList</span>):</span></span><br><span class="line">    mysqlConnect = pymysql.connect(host=mysqlHost, user=mysqlUser, password=mysqlPassword, db=mysqlDatabase, charset=mysqlCharset)</span><br><span class="line">    mysqlCursor = mysqlConnect.cursor()</span><br><span class="line">    mysqlCursor.execute(<span class="string">&#x27;delete from proxy&#x27;</span>)</span><br><span class="line">    print_info(<span class="string">&#x27;清空proxy数据表&#x27;</span>)</span><br><span class="line">    sql = <span class="string">&quot;insert into proxy(ip) values (%s)&quot;</span></span><br><span class="line">    mysqlCursor.executemany(sql, proxyList)</span><br><span class="line">    mysqlConnect.commit()</span><br><span class="line">    mysqlCursor.close()</span><br><span class="line">    mysqlConnect.close()</span><br><span class="line">    print_info(<span class="string">&quot;写入数据库成功&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">requestUrlStatusCode</span>(<span class="params">options</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;判断代理是否可用</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        options ([list]): 需要请求的url和代理地址</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        [type]: list</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    url = options[<span class="number">0</span>]</span><br><span class="line">    proxies = options[<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url=url, headers=headers, proxies=proxies, timeout=requestTimeout, verify=<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> options[<span class="number">2</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_email_163</span>(<span class="params">sendFromAddr, sendFromPassword, sendToAddr, smtpServer, emailSubject, emailMessage</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;发送消息到目标邮箱</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">            sendFromAddr ([str]): 发送者的邮箱</span></span><br><span class="line"><span class="string">            sendFromPassword ([str]): 发送者邮箱密码</span></span><br><span class="line"><span class="string">            sendToAddr ([str]): 接收者邮箱</span></span><br><span class="line"><span class="string">            smtpServer ([str]): SMTP服务器</span></span><br><span class="line"><span class="string">            message ([str]): 发送的消息</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">            [str]: 发送成功返回标题 发送失败返回None</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        mimeMessageText = MIMEText(</span><br><span class="line">            _text=emailMessage, _subtype=<span class="string">&#x27;plain&#x27;</span>, _charset=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        mimeMessageText[<span class="string">&#x27;Subject&#x27;</span>] = emailSubject</span><br><span class="line">        mimeMessageText[<span class="string">&#x27;To&#x27;</span>] = sendToAddr</span><br><span class="line">        mimeMessageText[<span class="string">&#x27;From&#x27;</span>] = sendFromAddr</span><br><span class="line"></span><br><span class="line">        server = smtplib.SMTP_SSL(smtpServer, <span class="number">994</span>)</span><br><span class="line">        server.login(sendFromAddr, sendFromPassword)</span><br><span class="line">        server.sendmail(sendFromAddr, [sendToAddr], mimeMessageText.as_string())</span><br><span class="line">        server.close()</span><br><span class="line">        <span class="keyword">return</span> emailSubject</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    _89ipProxyList = filter_89ip_proxy(threads)</span><br><span class="line">    print_info(<span class="string">&quot;获得&quot;</span> + color.yellow(<span class="built_in">str</span>(<span class="built_in">len</span>(_89ipProxyList))) + color.green(<span class="string">&quot;个可用代理&quot;</span>) )</span><br><span class="line">    insert_proxy_to_mysql(_89ipProxyList)</span><br><span class="line">    sendEmail163 = send_email_163(sendFromAddr, sendFromPassword,</span><br><span class="line">                                  <span class="string">&#x27;cmacckk@126.com&#x27;</span>, neteaseSMTPServer, <span class="string">&#x27;代理池更新&#x27;</span>, <span class="string">&quot;代理池更新成功&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> sendEmail163 <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        print_info(<span class="string">&#x27;163邮箱信息发送失败&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print_info(<span class="string">&#x27;163邮箱信息发送成功 标题为&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(sendEmail163))</span><br><span class="line">    <span class="comment"># result = filter_7yip_proxy(threads)</span></span><br><span class="line">    <span class="comment"># print(result)</span></span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2021/06/13/proxyPool/">代理池构建</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">CMACCKK</a></p>
+        <p><span>Created:</span>2021-06-13, 10:16:59</p>
+        <p><span>Updated:</span>2021-06-13, 10:26:48</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2021/06/13/proxyPool/" title="代理池构建">http://cmacckk.cloud/2021/06/13/proxyPool/</a>
+            <span class="copy-path" data-clipboard-text="From http://cmacckk.cloud/2021/06/13/proxyPool/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2021/06/05/phpUnserialize/">
+                    PHP反序列化
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+<script>
+    yiliaConfig.toc = ["Hide", "Show", !!"false"];
+</script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"代理池构建　| CMACCKK blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2021/06/05/phpUnserialize/" title="Next: PHP反序列化">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/06/13/proxyPool/">代理池构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/05/phpUnserialize/">PHP反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/05/messageSend/">发送消息至邮箱或微信</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/fileInclude/">文件包含</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/fileUpload/">文件上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/SSRF/">SSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/cmdExecute/">命令执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/VM2SandboxEscape/">VM2沙盒逃逸</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/SSTI-payload/">SSTI-payload</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/">OS换源</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2021 CMACCKK   备案号:滇ICP备2021003344号
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >Site Visitors: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">Page Hits: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
